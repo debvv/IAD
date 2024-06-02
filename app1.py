@@ -8,6 +8,20 @@ from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Устанавливаем фоновое изображение
+page_bg_img = '''
+<style>
+.stApp {
+  background-image: url("debvv\IAD\background.png");
+  background-size: cover;
+}
+</style>
+'''
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
+
 # Load dataset
 st.title("Clasificarea persoanelor dupa venit")
 st.write("Devs: Eugeniu Casian&Virgiliu Plesca/SD-231M .")
