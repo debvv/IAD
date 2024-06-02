@@ -8,9 +8,14 @@ from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Load dataset
+st.title("Clasificarea persoanelor dupa venit")
+st.write("Devs: Eugeniu Casian&Virgiliu Plesca/SD-231M .")
+
+
 # Function to load and preprocess the dataset
 def load_data(file):
-    data = pd.read_csv(file , delimiter=';')
+    data = pd.read_csv(file, delimiter=';')
     data.dropna(inplace=True)
     
     # Encode categorical variables except the target variable 'income'
@@ -95,7 +100,7 @@ if uploaded_file is not None:
     def predict(input_data):
         # Check if all necessary columns are in the input data
         for column in X.columns:
-            if column not in input_data:
+            if column not in input_data or input_data[column] == '':
                 st.error(f"Missing input for {column}")
                 return None
         
@@ -103,7 +108,11 @@ if uploaded_file is not None:
         input_df = pd.DataFrame([input_data])
         for column in label_encoders:
             if column in input_df.columns:
-                input_df[column] = label_encoders[column].transform(input_df[column])
+                try:
+                    input_df[column] = label_encoders[column].transform(input_df[column])
+                except ValueError as e:
+                    st.error(f"Invalid value for {column}: {input_df[column][0]}")
+                    return None
         input_df = scaler.transform(input_df)
         
         # Make prediction
@@ -120,4 +129,3 @@ if uploaded_file is not None:
         prediction = predict(input_data)
         if prediction is not None:
             st.write(f'The predicted income is: {prediction}')
-            
