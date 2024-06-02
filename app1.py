@@ -33,6 +33,10 @@ st.write("Devs: Eugeniu Casian&Virgiliu Plesca/SD-231M/UTM.")
 # Function to load and preprocess the dataset
 def load_data(file):
     data = pd.read_csv(file, delimiter=';')
+
+    # Удаление начальных и конечных пробелов во всех строковых столбцах
+    data = data.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+    
     data.dropna(inplace=True)
     
     # Encode categorical variables except the target variable 'income'
