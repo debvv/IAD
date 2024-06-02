@@ -35,6 +35,9 @@ def load_data(file):
     data = pd.read_csv(file, delimiter=';')
     data.dropna(inplace=True)
     
+
+    return data
+
     # Encode categorical variables except the target variable 'income'
     label_encoders = {}
     for column in data.select_dtypes(include=['object']).columns:
@@ -46,7 +49,7 @@ def load_data(file):
             label_encoders[column] = LabelEncoder()
             data[column] = label_encoders[column].fit_transform(data[column])
     
-    return data, label_encoders
+   # return data, label_encoders
 
 # Streamlit UI
 st.write("## Upload your dataset")
