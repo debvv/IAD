@@ -151,6 +151,8 @@ if uploaded_file is not None:
     def load_data_hist(file):
         data = pd.read_csv(file, delimiter=';')
         data.dropna(inplace=True)
+       # Исключение строк с некорректными значениями в столбце 'occupation'           ?????
+       # data = data[data['occupation'] != '?']
         return data
     file_path = 'B7_adult.csv'
     dataHist = load_data_hist(file_path)
