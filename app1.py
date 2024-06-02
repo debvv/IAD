@@ -12,7 +12,7 @@ import seaborn as sns
 page_bg_img = '''
 <style>
 .stApp {
-  background-image: url("debvv\IAD\background.png");
+  background-image: url("background.png");
   background-size: cover;
 }
 </style>
