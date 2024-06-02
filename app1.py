@@ -15,7 +15,7 @@ base64_str = "ha4dQOpx47/6n1YVBhOaM9JatkbRZE/KpqsmF3OvprewsIi8phAg2oulD/D0ZFBgAt
 page_bg_img = f'''
 <style>
 .stApp {{
-  background-image: url("data:image/png;base64,{base64_str}");
+  background-image: url("https://imgur.com/a/0Y2ssSk");
   background-size: cover;
 }}
 </style>
