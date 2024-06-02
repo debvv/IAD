@@ -15,7 +15,7 @@ base64_str = "ha4dQOpx47/6n1YVBhOaM9JatkbRZE/KpqsmF3OvprewsIi8phAg2oulD/D0ZFBgAt
 page_bg_img = f'''
 <style>
 .stApp {{
-  background-image: url("https://imgur.com/a/0Y2ssSk");
+  background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fru.pngtree.com%2Ffree-backgrounds&psig=AOvVaw3jUvw3MxkU0-qzGF-j2Hs9&ust=1717437563656000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCODsydG_vYYDFQAAAAAdAAAAABAE");
   background-size: cover;
 }}
 </style>
