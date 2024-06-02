@@ -146,3 +146,30 @@ if uploaded_file is not None:
         prediction = predict(input_data)
         if prediction is not None:
             st.write(f'The predicted income is: {prediction}')
+
+
+    def load_data_hist(file):
+        data = pd.read_csv(file, delimiter=';')
+        data.dropna(inplace=True)
+        return data
+    file_path = 'B7_adult.csv'
+    dataHist = load_data_hist(file_path)
+    # Проверка первых строк данных
+    st.write("Первые строки данных:", dataHist.head())
+    # Подсчёт количества каждой профессии
+    occupation_counts = dataHist['occupation'].value_counts()
+    # Проверка уникальных значений в столбце 'occupation'
+    st.write("Уникальные профессии:", dataHist['occupation'].unique())
+    
+    # Построение гистограммы
+    fig, ax = plt.subplots(figsize=(10, 6))
+    occupation_counts.plot(kind='bar', color='skyblue', ax=ax)
+    ax.set_title('Самые распространенные профессии среди взрослых')
+    ax.set_xlabel('Профессия')
+    ax.set_ylabel('Количество')
+    ax.set_xticklabels(occupation_counts.index, rotation=45, ha='right')# Использование названий профессий
+    #предыдущее значение (ax.get_xticklabels(), rotation=45)
+    plt.tight_layout()
+
+    # Отображение гистограммы в Streamlit
+    st.pyplot(fig)
